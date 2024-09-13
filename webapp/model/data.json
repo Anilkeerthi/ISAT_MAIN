@@ -1,0 +1,54 @@
+{
+
+    "leadData": [
+      {
+        "scenario Id": "S001",
+        "description": "Lead for Software Development",
+        "portfolio": "IT Services",
+        "issues": "No issues"
+      },
+      {
+        "scenario Id": "S002",
+        "description": "Lead for Marketing Campaign",
+        "portfolio": "Marketing",
+        "issues": "Pending approval"
+      },
+      {
+        "scenario Id": "S003",
+        "description": "Lead for Product Launch",
+        "portfolio": "Product Management",
+        "issues": "Budget constraints"
+      },
+      {
+        "scenario Id": "S004",
+        "description": "Lead for Logistics Management",
+        "portfolio": "Logistics",
+        "issues": "Delays in shipment"
+      },
+      {
+        "scenario Id": "S005",
+        "description": "Lead for R&D Project",
+        "portfolio": "Research",
+        "issues": "None"
+      },
+      {
+        "scenario Id": "S003",
+        "description": "Lead for Product Launch",
+        "portfolio": "Product Management",
+        "issues": "Budget constraints"
+      },
+      {
+        "scenario Id": "S004",
+        "description": "Lead for Logistics Management",
+        "portfolio": "Logistics",
+        "issues": "Delays in shipment"
+      },
+      {
+        "scenario Id": "S005",
+        "description": "Lead for R&D Project",
+        "portfolio": "Research",
+        "issues": "None"
+      }
+    ]
+  }
+

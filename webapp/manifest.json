@@ -1,0 +1,146 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.isat.isatui5",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.14.5",
+      "toolsId": "38dfd434-e88c-479f-a0ab-65c9c6002fd0"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.127.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.suite.ui.commons": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {},
+        "sap.suite.ui.microchart": {}
+       
+        
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.isat.isatui5.i18n.i18n"
+        }
+      },
+      "comboJsonModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/ComboBox.json"
+      },
+      "dataJsonModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/data.json"
+      },
+      "chartData": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/ChartContainerData.json"
+      },
+      "chartData1": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "./model/ChartContainerData1.json"
+      }
+
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.isat.isatui5.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteDashboard",
+          "pattern": ":?query:",
+          "target": [
+            "TargetDashboard"
+          ]
+        },
+        {
+          "name": "RouteHomeScreen",
+          "pattern": "HomeScreen",
+          "target": [
+            "TargetHomeScreen"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetDashboard": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Dashboard",
+          "viewName": "Dashboard"
+        },
+        "TargetHomeScreen": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HomeScreen",
+          "viewName": "HomeScreen"
+        }
+      }
+    
+      
+    },
+    "rootView": {
+      "viewName": "com.isat.isatui5.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "comisatisatui5"
+  }
+}
