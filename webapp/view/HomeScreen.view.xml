@@ -128,7 +128,7 @@
                                 minScreenWidth="Tablet"
                                 demandPopin="true"
                             >
-                                <Text text="Scenario ID/ Description" />
+                                <Text text="Scenario ID/ Description " />
                             </Column>
                             <Column
                                 minScreenWidth="Desktop"
