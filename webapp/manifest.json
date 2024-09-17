@@ -70,13 +70,9 @@
         "type": "sap.ui.model.json.JSONModel",
         "uri": "./model/data.json"
       },
-      "chartData": {
+      "CustomerData": {
         "type": "sap.ui.model.json.JSONModel",
-        "uri": "./model/ChartContainerData.json"
-      },
-      "chartData1": {
-        "type": "sap.ui.model.json.JSONModel",
-        "uri": "./model/ChartContainerData1.json"
+        "uri": "./model/CustomerData.json"
       }
 
     },
@@ -111,6 +107,13 @@
           "target": [
             "TargetHomeScreen"
           ]
+        },
+        {
+          "name": "RouteAdminScreen",
+          "pattern": "AdminScreen",
+          "target": [
+            "TargetAdminScreen"
+          ]
         }
       ],
       "targets": {
@@ -127,6 +130,13 @@
           "clearControlAggregation": false,
           "viewId": "HomeScreen",
           "viewName": "HomeScreen"
+        },
+        "TargetAdminScreen": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "AdminScreen",
+          "viewName": "AdminScreen"
         }
       }
     

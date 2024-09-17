@@ -1,0 +1,221 @@
+<mvc:View
+    controllerName="com.isat.isatui5.controller.AdminScreen"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m"
+>
+    <Page>
+        <content>
+            <tnt:ToolHeader
+                id="shellLikeToolHeaderr"
+                class="sapUiTinyMargin"
+            >
+                <Title
+                    text="Admin Screen"
+                    wrapping="false"
+                    id="productName"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData priority="Disappear" />
+                    </layoutData>
+                </Title>
+            </tnt:ToolHeader>
+
+            <Panel>
+                <!-- ComboBox for selecting entity -->
+                <ComboBox
+                    id="entityComboBox"
+                    placeholder="Select the entity"
+                    change="onEntityChange"
+                >
+                    <core:ListItem
+                        key="CustomersData"
+                        text="Customers Data"
+                    />
+                    <core:ListItem
+                        key="ProjectsData"
+                        text="Projects Data"
+                    />
+                    <core:ListItem
+                        key="Users"
+                        text="Users"
+                    />
+                </ComboBox>
+            </Panel>
+
+            <!-- Table for Customers Data -->
+            <Panel>
+                <Table
+                    id="idCustomersTable"
+                    inset="false"
+                    visible="false"
+                    items="{
+			path: 'CustomerData>/EntitySet/CustomersData',
+			sorter: { path: 'Name' }
+		}"
+                >
+                    <columns>
+
+                        <Column
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                        >
+                            <Text text="autoid" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Desktop"
+                            demandPopin="true"
+                            hAlign="End"
+                        >
+                            <Text text="custid" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Desktop"
+                            demandPopin="true"
+                            hAlign="Center"
+                        >
+                            <Text text="description" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="location" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="name" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text text="{CustomerData>autoid}" />
+                                <Text text="{CustomerData>custid}" />
+                                <Text text="{CustomerData>description}" />
+                                <Text text="{CustomerData>location}" />
+                                <Text text="{CustomerData>name}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Panel>
+
+            <!-- Table for Projects Data -->
+            <Panel>
+                <Table
+                    id="idProjectsTable"
+                    inset="false"
+                    visible="false"
+                    items="{
+			path: 'CustomerData>/EntitySet/ProjectsData',
+			sorter: { path: 'Name' }
+		}"
+                >
+                    <columns>
+                       
+                        <Column
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                        >
+                            <Text text="autoid" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Desktop"
+                            demandPopin="true"
+                            hAlign="End"
+                        >
+                            <Text text="description" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Desktop"
+                            demandPopin="true"
+                            hAlign="Center"
+                        >
+                            <Text text="name" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="projid" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="status" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text text="{CustomerData>autoid}" />
+                                <Text text="{CustomerData>description}" />
+                                <Text text="{CustomerData>name}" />
+                                <Text text="{CustomerData>projid}" />
+                                <Text text="{CustomerData>status}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Panel>
+
+            <!-- Table for Users Data -->
+            <Panel>
+                <Table
+                    id="idUsersTable"
+                    inset="false"
+                    visible="false"
+                    items="{
+			path: 'CustomerData>/EntitySet/Users',
+			sorter: { path: 'Name' }
+		}"
+                >
+                    <columns>
+
+
+                        <Column
+                            minScreenWidth="Tablet"
+                            demandPopin="true"
+                        >
+                            <Text text="active" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Desktop"
+                            demandPopin="true"
+                            hAlign="End"
+                        >
+                            <Text text="autoid" />
+                        </Column>
+                        <Column
+                            minScreenWidth="Desktop"
+                            demandPopin="true"
+                            hAlign="Center"
+                        >
+                            <Text text="custid" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="emailid" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="name" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="role" />
+                        </Column>
+                        <Column hAlign="End">
+                            <Text text="userid" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text text="{CustomerData>active}" />
+                                <Text text="{CustomerData>autoid}" />
+                                <Text text="{CustomerData>custid}" />
+                                <Text text="{CustomerData>emailid}" />
+                                <Text text="{CustomerData>name}" />
+                                <Text text="{CustomerData>role}" />
+                                <Text text="{CustomerData>userid}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

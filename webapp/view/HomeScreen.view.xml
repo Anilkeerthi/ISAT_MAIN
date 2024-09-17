@@ -59,6 +59,11 @@
                     </uxap:expandedContent>
 
                     <uxap:actions>
+
+                        <m:Button
+                            text="Admin"
+                            press="onAdminButtonPress"
+                        />
                         <m:Button
                             text="New"
                             press="onAddButtonPress"
@@ -108,7 +113,6 @@
                         <Button text="Go" />
                         <Button text="Show Filter Bar" />
                         <Button text="Restore" />
-
                         <Button
                             text="Filters"
                             type="Transparent"

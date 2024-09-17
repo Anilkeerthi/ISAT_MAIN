@@ -20,12 +20,24 @@ function (Controller,JSONModel,fioriLibrary,MessageToast) {
 				var Model = this.getOwnerComponent().getModel("dataJsonModel");
                 this.getView().setModel(Model,"jsonModel")
                 console.log(Model)
+
+				var OModel = this.getOwnerComponent().getModel("CustomerData");
+                this.getView().getModel(OModel)
+                console.log(OModel)
+
+				
+                
                 
         },
 		backToDashBoard:function(){
             var route = this.getOwnerComponent().getRouter();
             route.navTo("RouteDashboard")
         },
+
+		onAdminButtonPress:function(){
+			var routee = this.getOwnerComponent().getRouter();
+			routee.navTo("RouteAdminScreen")
+		},
         // handleSelectionChange: function(oEvent) {
 		// 	var changedItem = oEvent.getParameter("changedItem");
 		// 	var isSelected = oEvent.getParameter("selected");
