@@ -2,6 +2,7 @@
     controllerName="com.isat.isatui5.controller.Dashboard"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
+    xmlns:m="sap.m"
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
@@ -10,33 +11,46 @@
     xmlns:viz.data="sap.viz.ui5.data"
     xmlns:viz="sap.viz.ui5.controls"
     xmlns:unified="sap.ui.unified"
-   xmlns:micro="sap.suite.ui.microchart"
+    xmlns:micro="sap.suite.ui.microchart"
+      xmlns:uxap="sap.uxap"
 >
     <Page>
         <content>
-            <VBox class="sapUiSmallMargin">
-                <ObjectHeader
-                    title="Integrations Support Automation Toolkit"
-                    backgroundDesign="Solid"
-                    responsive="true"
-                >
-                    <attributes>
-                        <ObjectAttribute
-                            text="One Stop dashboard for all Projects and Interfaces"
+             <uxap:ObjectPageLayout
+            height="16%"
+            id="AobjectPageLayout"
+        >
+            <uxap:headerTitle>
+                <uxap:ObjectPageDynamicHeaderTitle>
+                    <uxap:expandedHeading>
+                        <Toolbar>
+                            <Title text=" Integrations Support Automation Toolkit" />
+                        </Toolbar>
+                    </uxap:expandedHeading>
+                    <uxap:expandedContent>
+                        <m:Text text="One Stop dashboard for all Projects and Interfaces." />
+                    </uxap:expandedContent>
+
+                    <uxap:actions>
+
+                        <m:Button
+                            text="Admin"
+                            press="onAdminButtonPress"
                         />
-                    </attributes>
-                </ObjectHeader>
-                <Text
-                    text="Welcome User :)"
-                    class="welcome"
-                />
-               
-                <Button
-                    text="HomeScreen"
+                        <m:Button
+                            text="HomeScreen"
                    
                     press="onClick"
-                />
-            </VBox>
+                        />
+                      
+                    </uxap:actions>
+                </uxap:ObjectPageDynamicHeaderTitle>
+            </uxap:headerTitle>
+        </uxap:ObjectPageLayout>
+        <Text
+            text="Welcome User :)"
+            class="welcome"
+        />
  
             <l:BlockLayout class="layout-container">
                 <!-- First Main Section with 4 Subsections -->
@@ -51,75 +65,66 @@
                             <l:BlockLayoutRow>
                                 <l:BlockLayoutCell
                                     width="12"
-                                    class="responsiveCell"
+                                    class="responsiveCell data"
                                 >
-                                    <Panel
-                                        class="sapUiContentPadding calendar-container"
-                                    >
-                                        <VBox class="chartBox">
-                                            <Toolbar>
-                                                <Title
-                                                    text="Scenarios by Release"
-                                                    level="H2"
-                                                />
-                                            </Toolbar>
-                                            <viz:VizFrame
-                                                id="idScenariosReleaseChart"
-                                                height="200px"
-                                                width="100%"
-                                                vizType="column"
-                                            >
-                                                <viz:dataset>
-                                                    <viz.data:FlattenedDataset
-                                                        data="{viewModel>/scenariosByRelease}"
-                                                    >
-                                                        <viz.data:dimensions>
-                                                            <viz.data:DimensionDefinition
-                                                                name="Release"
-                                                                value="{release}"
-                                                            />
-                                                        </viz.data:dimensions>
-                                                        <viz.data:measures>
-                                                            <viz.data:MeasureDefinition
-                                                                name="Count"
-                                                                value="{count}"
-                                                            />
-                                                        </viz.data:measures>
-                                                    </viz.data:FlattenedDataset>
-                                                </viz:dataset>
-                                                <viz:feeds>
-                                                    <viz.feeds:FeedItem
-                                                        uid="valueAxis"
-                                                        type="Measure"
-                                                        values="Count"
-                                                    />
-                                                    <viz.feeds:FeedItem
-                                                        uid="categoryAxis"
-                                                        type="Dimension"
-                                                        values="Release"
-                                                    />
-                                                </viz:feeds>
-                                            </viz:VizFrame>
- 
- <micro:ColumnMicroChart
-                                            size="Responsive"
+                                    <VBox class="chartBox">
+                                        <f:Card
+                                            class="sapUiMediumMargin"
+                                            width="100%"
                                         >
-                                            <micro:columns>
-                                                <micro:ColumnMicroChartData
-                                                    value="5"
-                                                    color="Error"
-                                                />
-                                                <micro:ColumnMicroChartData
-                                                    value="13"
-                                                    color="Error"
-                                                />
-                                                <micro:ColumnMicroChartData
-                                                    value="9"
-                                                />
-                                            </micro:columns>
-                                        </micro:ColumnMicroChart>
-                                        </VBox>
-                                    </Panel>
+                                            <f:header>
+                                                <card:Header
+                                                    title="List of Interfaces Project wise"
+                                                >
+                                               
+                                                       
+                                                           
+                                                       
+                                                 
+                                                </card:Header>
+                                            </f:header>
+                                            <f:content>
+                                                <viz:VizFrame
+                                                    id="idScenariosReleaseChart"
+                                                    height="200px"
+                                                    width="100%"
+                                                    vizType="column"
+                                                >
+                                                    <viz:dataset>
+                                                        <viz.data:FlattenedDataset
+                                                            data="{viewModel>/ListOfInterfaces}"
+                                                        >
+                                                            <viz.data:dimensions
+                                                            >
+                                                                <viz.data:DimensionDefinition
+                                                                    name="project"
+                                                                    value="{project}"
+                                                                />
+                                                            </viz.data:dimensions>
+                                                            <viz.data:measures>
+                                                                <viz.data:MeasureDefinition
+                                                                    name="interfaces"
+                                                                    value="{interfaces}"
+                                                                />
+                                                            </viz.data:measures>
+                                                        </viz.data:FlattenedDataset>
+                                                    </viz:dataset>
+                                                    <viz:feeds>
+                                                        <viz.feeds:FeedItem
+                                                            uid="valueAxis"
+                                                            type="Measure"
+                                                            values="interfaces"
+                                                        />
+                                                        <viz.feeds:FeedItem
+                                                            uid="categoryAxis"
+                                                            type="Dimension"
+                                                            values="project"
+                                                        />
+                                                    </viz:feeds>
+                                                </viz:VizFrame>
+                                            </f:content>
+                                        </f:Card>
+                                    </VBox>
                                 </l:BlockLayoutCell>
                                 <l:BlockLayoutCell
                                     width="12"
@@ -331,7 +336,10 @@
                         width="4"
                         class="responsiveCell"
                     >
-                        <Panel class="sapUiContentPadding calendar-container" height="100%">
+                        <Panel
+                            class="sapUiContentPadding calendar-container"
+                            height="100%"
+                        >
                             <VBox class="chartBox">
                                 <Toolbar>
                                     <Title
@@ -384,4 +392,3 @@
         </content>
     </Page>
 </mvc:View>
- 

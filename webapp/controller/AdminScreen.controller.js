@@ -11,47 +11,11 @@ sap.ui.define(
           
         },
 
-      //   onEntityChange: function(oEvent) {
-      //     // Get the ComboBox instance
-      //     var oComboBox = oEvent.getSource();
-          
-      //     // Get the selected key from the ComboBox
-      //     var selectedKey = oComboBox.getSelectedKey();
-      
-      //     // Debugging: Check if selectedKey is available
-      //     if (!selectedKey) {
-      //         console.warn("No item selected in ComboBox.");
-      //         return;
-      //     }
-      
-      //     // Hide all tables initially
-      //     this.byId("idProductsTablea").setVisible(false);
-      //     this.byId("idProductsTableb").setVisible(false);
-      //     this.byId("idProductsTablec").setVisible(false);
-      
-      //     // Show and bind the appropriate table based on the selected key
-      //     if (selectedKey === "CustomersData") {
-      //         this.byId("idProductsTablea").setVisible(true);
-      //         this.byId("idProductsTablea").bindItems({
-      //             path: "/EntitySet/CustomersData",
-      //             template: this.byId("idProductsTablea").getBindingInfo("items").template
-      //         });
-      //     } else if (selectedKey === "ProjectsData") {
-      //         this.byId("idProductsTableb").setVisible(true);
-      //         this.byId("idProductsTableb").bindItems({
-      //             path: "/EntitySet/ProjectsData",
-      //             template: this.byId("idProductsTableb").getBindingInfo("items").template
-      //         });
-      //     } else if (selectedKey === "Users") {
-      //         this.byId("idProductsTablec").setVisible(true);
-      //         this.byId("idProductsTablec").bindItems({
-      //             path: "/EntitySet/Users",
-      //             template: this.byId("idProductsTablec").getBindingInfo("items").template
-      //         });
-      //     } else {
-      //         console.warn("Unexpected key selected:", selectedKey);
-      //     }
-      // }
+        backToDashBoard:function(){
+          var route = this.getOwnerComponent().getRouter();
+          route.navTo("RouteDashboard")
+      },
+
       
     
             onEntityChange: function(oEvent) {

@@ -6,29 +6,28 @@
     displayBlock="true"
     xmlns:tnt="sap.tnt"
     xmlns="sap.m"
+     xmlns:m="sap.m"
+     xmlns:uxap="sap.uxap"
 >
     <Page>
         <content>
-            <tnt:ToolHeader
-                id="shellLikeToolHeaderr"
-                class="sapUiTinyMargin"
-            >
-                <Title
-                    text="Admin Screen"
-                    wrapping="false"
-                    id="productName"
-                >
-                    <layoutData>
-                        <OverflowToolbarLayoutData priority="Disappear" />
-                    </layoutData>
-                </Title>
-            </tnt:ToolHeader>
-
-            <Panel>
-                <!-- ComboBox for selecting entity -->
-                <ComboBox
+        <uxap:ObjectPageLayout
+            height="12%"
+            id="BobjectPageLayout"
+        >
+            <uxap:headerTitle>
+                <uxap:ObjectPageDynamicHeaderTitle>
+                    <uxap:expandedHeading>
+                        <Toolbar>
+                        <Button
+                                icon="sap-icon://home"
+                                press="backToDashBoard"
+                            />
+                              <Label text="Select the entity" />
+                            
+                           <ComboBox
                     id="entityComboBox"
-                    placeholder="Select the entity"
+                    placeholder="All"
                     change="onEntityChange"
                 >
                     <core:ListItem
@@ -44,10 +43,51 @@
                         text="Users"
                     />
                 </ComboBox>
+                        </Toolbar>
+                    </uxap:expandedHeading>
+                 
+
+                    <uxap:actions>
+
+                        <m:Button
+                            text="NEW"
+                            press="onAdminButtonPress"
+                        />
+                        <m:Button
+                            text="Import"
+                   
+                    press="onClickImport"
+                        />
+                         <m:Button
+                            text="ExportExport"
+                   
+                    press="onClick"
+                        />
+
+                      
+                    </uxap:actions>
+                </uxap:ObjectPageDynamicHeaderTitle>
+            </uxap:headerTitle>
+        </uxap:ObjectPageLayout>
+
+            <Panel>
+                <SearchField
+                            width="auto"
+                            class="searchFieldCustomWidth"
+                            id="AsearchField"
+                            placeholder="Search for entitys"
+                        >
+                            <layoutData>
+                                <OverflowToolbarLayoutData
+                                    priority="NeverOverflow"
+                                    group="1"
+                                />
+                            </layoutData>
+                        </SearchField>
             </Panel>
 
             <!-- Table for Customers Data -->
-            <Panel>
+           
                 <Table
                     id="idCustomersTable"
                     inset="false"
@@ -98,10 +138,7 @@
                         </ColumnListItem>
                     </items>
                 </Table>
-            </Panel>
-
-            <!-- Table for Projects Data -->
-            <Panel>
+           
                 <Table
                     id="idProjectsTable"
                     inset="false"
@@ -152,10 +189,7 @@
                         </ColumnListItem>
                     </items>
                 </Table>
-            </Panel>
-
-            <!-- Table for Users Data -->
-            <Panel>
+            
                 <Table
                     id="idUsersTable"
                     inset="false"
@@ -215,7 +249,7 @@
                         </ColumnListItem>
                     </items>
                 </Table>
-            </Panel>
+            
         </content>
     </Page>
 </mvc:View>

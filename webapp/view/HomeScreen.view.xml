@@ -60,10 +60,10 @@
 
                     <uxap:actions>
 
-                        <m:Button
+                        <!-- <m:Button
                             text="Admin"
                             press="onAdminButtonPress"
-                        />
+                        /> -->
                         <m:Button
                             text="New"
                             press="onAddButtonPress"
@@ -199,6 +199,7 @@
                                     <Button
                                         type="Emphasized"
                                         icon="sap-icon://display"
+                                        press="onClickOnDisplay"
                                     />
                                 </cells>
                             </ColumnListItem>
