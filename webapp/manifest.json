@@ -14,6 +14,19 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.14.5",
       "toolsId": "38dfd434-e88c-479f-a0ab-65c9c6002fd0"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "ISAT_MAIN-display": {
+          "semanticObject": "ISAT_MAIN",
+          "action": "display",
+          "title": "ISAT-MAIN",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
     }
   },
   "sap.ui": {

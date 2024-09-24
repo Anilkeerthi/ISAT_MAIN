@@ -7,6 +7,7 @@
     xmlns="sap.m"
     xmlns:tnt="sap.tnt"
     xmlns:f="sap.f"
+    xmlns:fr="sap.ui.layout.form"
     xmlns:uxap="sap.uxap"
     xmlns:m="sap.m"
     xmlns:si="sap.suite.ui.commons.statusindicator"
@@ -15,9 +16,7 @@
     xmlns:c="sap.suite.ui.commons"
     xmlns:suite="sap.suite.ui.commons"
 >
-   <Page>
-   
-               
+    <Page>
         <uxap:ObjectPageLayout
             height="16%"
             id="objectPageLayout"
@@ -59,7 +58,6 @@
                     </uxap:expandedContent>
 
                     <uxap:actions>
-
                         <!-- <m:Button
                             text="Admin"
                             press="onAdminButtonPress"
@@ -123,7 +121,7 @@
                     <Table
                         id="existingLeadsTable"
                         inset="false"
-                        items="{jsonModel>/leadData}"
+                        items="{jsonModel>/InterfaceDetails}"
                         class="sapFDynamicPageAlignContent"
                         width="auto"
                     >
@@ -132,21 +130,21 @@
                                 minScreenWidth="Tablet"
                                 demandPopin="true"
                             >
-                                <Text text="Scenario ID/ Description " />
+                                <Text text="Name/Techpoc" />
                             </Column>
                             <Column
                                 minScreenWidth="Desktop"
                                 demandPopin="true"
                                 hAlign="Center"
                             >
-                                <Text text="Portfolio" />
+                                <Text text="Module" />
                             </Column>
                             <Column
                                 minScreenWidth="Desktop"
                                 demandPopin="true"
                                 hAlign="Center"
                             >
-                                <Text text="Issues" />
+                                <Text text="Package Type" />
                             </Column>
                             <Column
                                 hAlign="Center"
@@ -164,8 +162,8 @@
                                     <FlexBox direction="Column">
                                         <!-- ObjectIdentifier for scenario Id and description -->
                                         <ObjectIdentifier
-                                            title="{jsonModel>scenario Id}"
-                                            text="{jsonModel>description}"
+                                            title="{jsonModel>name}"
+                                            text="{jsonModel>techpoc}"
                                         />
 
                                         <!-- MicroProcessFlow using 'content' aggregation -->
@@ -191,20 +189,162 @@
                                     </FlexBox>
 
                                     <ObjectIdentifier
-                                        text="{jsonModel>portfolio}"
+                                        text="{jsonModel>module}"
                                     />
                                     <ObjectIdentifier
-                                        text="{jsonModel>issues}"
+                                        text="{jsonModel>package}"
                                     />
                                     <Button
                                         type="Emphasized"
                                         icon="sap-icon://display"
                                         press="onClickOnDisplay"
+                                        class="sapUiSmallMarginBottom"
+                                        ariaHasPopup="Dialog"
                                     />
                                 </cells>
                             </ColumnListItem>
                         </items>
                     </Table>
+
+                    <!-- Dialog Definition for home screen actions -->
+
+                    <Dialog
+                        id="detailsDialog"
+                        title="Interface Details"
+                        stretch="false"
+                        afterClose="onDialogClose"
+                    >
+                        <content>
+                            <HBox class="Actions">
+                                <VBox>
+                                    <Label text="Name :" />
+                                    <Input
+                                        value="{dialogModel>/name}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="Module :" />
+                                    <Input
+                                        value="{dialogModel>/module}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                            </HBox>
+
+                            <HBox class="Actions">
+                                <VBox>
+                                    <Label text="Package :" />
+                                    <Input
+                                        value="{dialogModel>/package}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="Sendersystem :" />
+                                    <Input
+                                        value="{dialogModel>/sendersystem}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                            </HBox>
+
+                            <HBox class="Actions">
+                                <VBox>
+                                    <Label text="Receiversystem :" />
+                                    <Input
+                                        value="{dialogModel>/receiversystem}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="Processtype :" />
+                                    <Input
+                                        value="{dialogModel>/process}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                            </HBox>
+
+                            <HBox class="Actions">
+                                <VBox>
+                                    <Label text="Sourceadapter :" />
+                                    <Input
+                                        value="{dialogModel>/sourceadapter}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="Targetadapter :" />
+                                    <Input
+                                        value="{dialogModel>/targetadapter}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                            </HBox>
+
+                            <HBox class="Actions">
+                                <VBox>
+                                    <Label text="Techpoc :" />
+                                    <Input
+                                        value="{dialogModel>/techpoc}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="Functionalpoc :" />
+                                    <Input
+                                        value="{dialogModel>/functionalpoc}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                            </HBox>
+
+                            <HBox class="Actions">
+                                <VBox>
+                                    <Label text="Businesspoc :" />
+                                    <Input
+                                        value="{dialogModel>/businesspoc}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="Doctype :" />
+                                    <Input
+                                        value="{dialogModel>/doctype}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                            </HBox>
+
+                            <HBox class="Actions">
+                                <VBox>
+                                    <Label text="Frequency :" />
+                                    <Input
+                                        value="{dialogModel>/frequency}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="Ccenabled :" />
+                                    <Switch state="{dialogModel>/ccenabled}" />
+                                </VBox>
+                            </HBox>
+                        </content>
+
+                        <beginButton>
+                            <Button
+                                text="{dialogModel>/buttonText}"
+                                press="onToggleEdit"
+                            />
+                        </beginButton>
+                        <endButton>
+                            <Button
+                                text="Cancel"
+                                press="onCloseDialog"
+                            />
+                        </endButton>
+                    </Dialog>
                 </Page>
 
                 <!--  </f:DynamicPage>  -->
@@ -833,6 +973,5 @@
                 </Page>
             </f:endColumnPages>
         </f:FlexibleColumnLayout>
-   
-   </Page>
+    </Page>
 </mvc:View>

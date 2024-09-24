@@ -160,5 +160,9 @@ div#__title0-expand-wrapper {
         width: 100% !important;
     }
 }
+.Actions{
+    gap: 10px !important;
+    padding: 10px !important;
+}
 
 
