@@ -1,0 +1,98 @@
+<mvc:View
+    controllerName="com.isat.isatui5.controller.Tables.Customer"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:tnt="sap.tnt"
+    xmlns="sap.m"
+    xmlns:m="sap.m"
+    xmlns:uxap="sap.uxap"
+>
+    <Page>
+
+     <Label text="Its not working"></Label>
+
+    
+        <content>
+           
+            <Panel>
+                <SearchField
+                    width="auto"
+                    class="searchFieldCustomWidth"
+                    id="AsearchFieldd"
+                    placeholder="Search for entitys"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            priority="NeverOverflow"
+                            group="1"
+                        />
+                    </layoutData>
+                </SearchField>
+            </Panel>
+
+           
+
+            <Table
+                id="idCustomersTablee"
+                inset="false"
+                visible="false"
+                items="{
+			path: 'CustomerData>/EntitySet/CustomersData',
+			sorter: { path: 'Name' }
+		}"
+            >
+                <columns>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="autoid" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="custid" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="description" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="location" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="name" />
+                    </Column>
+                     <Column hAlign="Center">
+                        <Text text="Actions" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{CustomerData>autoid}" />
+                            <Text text="{CustomerData>custid}" />
+                            <Text text="{CustomerData>description}" />
+                            <Text text="{CustomerData>location}" />
+                            <Text text="{CustomerData>name}" />
+                            <Button type="Emphasized"
+                            press=".onShowDetails"
+                                        icon="sap-icon://display" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            
+
+        </content>
+
+    </Page>
+</mvc:View>

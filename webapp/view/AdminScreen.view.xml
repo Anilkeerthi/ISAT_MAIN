@@ -1,3 +1,5 @@
+
+
 <mvc:View
     controllerName="com.isat.isatui5.controller.AdminScreen"
     xmlns:html="http://www.w3.org/1999/xhtml"
@@ -6,250 +8,331 @@
     displayBlock="true"
     xmlns:tnt="sap.tnt"
     xmlns="sap.m"
-     xmlns:m="sap.m"
-     xmlns:uxap="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:uxap="sap.uxap"
 >
     <Page>
         <content>
-        <uxap:ObjectPageLayout
-            height="12%"
-            id="BobjectPageLayout"
-        >
-            <uxap:headerTitle>
-                <uxap:ObjectPageDynamicHeaderTitle>
-                    <uxap:expandedHeading>
-                        <Toolbar>
-                        <Button
-                                icon="sap-icon://home"
-                                press="backToDashBoard"
+            <uxap:ObjectPageLayout
+                height="12%"
+                id="BobjectPageLayout"
+            >
+                <uxap:headerTitle>
+                    <uxap:ObjectPageDynamicHeaderTitle>
+                        <uxap:expandedHeading>
+                            <Toolbar>
+                                <Button
+                                    icon="sap-icon://home"
+                                    press="backToDashBoard"
+                                />
+                                <Label text="Select the entity" />
+
+                                <ComboBox
+                                    id="entityComboBox"
+                                    placeholder="All"
+                                    change="onEntityChange"
+                                    selectedKey="CustomersData"
+                                >
+                                    <core:ListItem
+                                        key="CustomersData"
+                                        text="Customers Data"
+                                    />
+                                    <core:ListItem
+                                        key="ProjectsData"
+                                        text="Projects Data"
+                                    />
+                                    <core:ListItem
+                                        key="Users"
+                                        text="Users"
+                                    />
+                                </ComboBox>
+                            </Toolbar>
+                        </uxap:expandedHeading>
+
+                        <uxap:actions>
+                            <m:Button
+                                text="NEW"
+                                press="onAdminButtonPress"
                             />
-                              <Label text="Select the entity" />
-                            
-                           <ComboBox
-                    id="entityComboBox"
-                    placeholder="All"
-                    change="onEntityChange"
-                >
-                    <core:ListItem
-                        key="CustomersData"
-                        text="Customers Data"
-                    />
-                    <core:ListItem
-                        key="ProjectsData"
-                        text="Projects Data"
-                    />
-                    <core:ListItem
-                        key="Users"
-                        text="Users"
-                    />
-                </ComboBox>
-                        </Toolbar>
-                    </uxap:expandedHeading>
-                 
-
-                    <uxap:actions>
-
-                        <m:Button
-                            text="NEW"
-                            press="onAdminButtonPress"
-                        />
-                        <m:Button
-                            text="Import"
-                   
-                    press="onClickImport"
-                        />
-                         <m:Button
-                            text="ExportExport"
-                   
-                    press="onClick"
-                        />
-
-                      
-                    </uxap:actions>
-                </uxap:ObjectPageDynamicHeaderTitle>
-            </uxap:headerTitle>
-        </uxap:ObjectPageLayout>
+                            <m:Button
+                                text="Import"
+                                press="onClickImport"
+                            />
+                            <m:Button
+                                text="Export"
+                                press="onClick"
+                            />
+                        </uxap:actions>
+                    </uxap:ObjectPageDynamicHeaderTitle>
+                </uxap:headerTitle>
+            </uxap:ObjectPageLayout>
 
             <Panel>
                 <SearchField
-                            width="auto"
-                            class="searchFieldCustomWidth"
-                            id="AsearchField"
-                            placeholder="Search for entitys"
-                        >
-                            <layoutData>
-                                <OverflowToolbarLayoutData
-                                    priority="NeverOverflow"
-                                    group="1"
-                                />
-                            </layoutData>
-                        </SearchField>
+                    width="auto"
+                    class="searchFieldCustomWidth"
+                    id="AsearchField"
+                    placeholder="Search for entitys"
+                >
+                    <layoutData>
+                        <OverflowToolbarLayoutData
+                            priority="NeverOverflow"
+                            group="1"
+                        />
+                    </layoutData>
+                </SearchField>
             </Panel>
 
             <!-- Table for Customers Data -->
-           
-                <Table
-                    id="idCustomersTable"
-                    inset="false"
-                    visible="false"
-                    items="{
-			path: 'CustomerData>/EntitySet/CustomersData',
+
+            <Table
+                id="idCustomersTable"
+                inset="false"
+                visible="false"
+                items="{
+			path: 'jsonModel>/EntitySet/CustomersData',
 			sorter: { path: 'Name' }
 		}"
-                >
-                    <columns>
+            >
+                <columns>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="autoid" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="custid" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="description" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="location" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="name" />
+                    </Column>
+                     <Column hAlign="Center">
+                        <Text text="Actions" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{jsonModel>autoid}" />
+                            <Text text="{jsonModel>custid}" />
+                            <Text text="{jsonModel>description}" />
+                            <Text text="{jsonModel>location}" />
+                            <Text text="{jsonModel>name}" />
+                            <Button type="Emphasized"
+                            press=".onShowDetails"
+                                        icon="sap-icon://display" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
 
-                        <Column
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                        >
-                            <Text text="autoid" />
-                        </Column>
-                        <Column
-                            minScreenWidth="Desktop"
-                            demandPopin="true"
-                            hAlign="End"
-                        >
-                            <Text text="custid" />
-                        </Column>
-                        <Column
-                            minScreenWidth="Desktop"
-                            demandPopin="true"
-                            hAlign="Center"
-                        >
-                            <Text text="description" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="location" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="name" />
-                        </Column>
-                    </columns>
-                    <items>
-                        <ColumnListItem vAlign="Middle">
-                            <cells>
-                                <Text text="{CustomerData>autoid}" />
-                                <Text text="{CustomerData>custid}" />
-                                <Text text="{CustomerData>description}" />
-                                <Text text="{CustomerData>location}" />
-                                <Text text="{CustomerData>name}" />
-                            </cells>
-                        </ColumnListItem>
-                    </items>
-                </Table>
-           
-                <Table
-                    id="idProjectsTable"
-                    inset="false"
-                    visible="false"
-                    items="{
+            <Table
+                id="idProjectsTable"
+                inset="false"
+                visible="false"
+                items="{
 			path: 'CustomerData>/EntitySet/ProjectsData',
 			sorter: { path: 'Name' }
 		}"
-                >
-                    <columns>
-                       
-                        <Column
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                        >
-                            <Text text="autoid" />
-                        </Column>
-                        <Column
-                            minScreenWidth="Desktop"
-                            demandPopin="true"
-                            hAlign="End"
-                        >
-                            <Text text="description" />
-                        </Column>
-                        <Column
-                            minScreenWidth="Desktop"
-                            demandPopin="true"
-                            hAlign="Center"
-                        >
-                            <Text text="name" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="projid" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="status" />
-                        </Column>
-                    </columns>
-                    <items>
-                        <ColumnListItem vAlign="Middle">
-                            <cells>
-                                <Text text="{CustomerData>autoid}" />
-                                <Text text="{CustomerData>description}" />
-                                <Text text="{CustomerData>name}" />
-                                <Text text="{CustomerData>projid}" />
-                                <Text text="{CustomerData>status}" />
-                            </cells>
-                        </ColumnListItem>
-                    </items>
-                </Table>
-            
-                <Table
-                    id="idUsersTable"
-                    inset="false"
-                    visible="false"
-                    items="{
+            >
+                <columns>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="autoid" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="description" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="name" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="projid" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="status" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="Actions" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{CustomerData>autoid}" />
+                            <Text text="{CustomerData>description}" />
+                            <Text text="{CustomerData>name}" />
+                            <Text text="{CustomerData>projid}" />
+                            <Text text="{CustomerData>status}" />
+                            <Button type="Emphasized"
+                            
+                                        icon="sap-icon://display" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <Table
+                id="idUsersTable"
+                inset="false"
+                visible="false"
+                items="{
 			path: 'CustomerData>/EntitySet/Users',
 			sorter: { path: 'Name' }
 		}"
-                >
-                    <columns>
+            >
+                <columns>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="active" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="autoid" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center"
+                    >
+                        <Text text="custid" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="emailid" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="name" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="role" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="userid" />
+                    </Column>
+                    <Column hAlign="Center">
+                        <Text text="Actions" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{CustomerData>active}" />
+                            <Text text="{CustomerData>autoid}" />
+                            <Text text="{CustomerData>custid}" />
+                            <Text text="{CustomerData>emailid}" />
+                            <Text text="{CustomerData>name}" />
+                            <Text text="{CustomerData>role}" />
+                            <Text text="{CustomerData>userid}" />
+                            <Button type="Emphasized"
+                                        icon="sap-icon://display" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
 
-
-                        <Column
-                            minScreenWidth="Tablet"
-                            demandPopin="true"
-                        >
-                            <Text text="active" />
-                        </Column>
-                        <Column
-                            minScreenWidth="Desktop"
-                            demandPopin="true"
-                            hAlign="End"
-                        >
-                            <Text text="autoid" />
-                        </Column>
-                        <Column
-                            minScreenWidth="Desktop"
-                            demandPopin="true"
-                            hAlign="Center"
-                        >
-                            <Text text="custid" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="emailid" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="name" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="role" />
-                        </Column>
-                        <Column hAlign="End">
-                            <Text text="userid" />
-                        </Column>
-                    </columns>
-                    <items>
-                        <ColumnListItem vAlign="Middle">
-                            <cells>
-                                <Text text="{CustomerData>active}" />
-                                <Text text="{CustomerData>autoid}" />
-                                <Text text="{CustomerData>custid}" />
-                                <Text text="{CustomerData>emailid}" />
-                                <Text text="{CustomerData>name}" />
-                                <Text text="{CustomerData>role}" />
-                                <Text text="{CustomerData>userid}" />
-                            </cells>
-                        </ColumnListItem>
-                    </items>
-                </Table>
             
+              <Dialog
+                        id="detailsDialog"
+                        title="Interface Details"
+                        stretch="false"
+                        afterClose="onDialogClose"
+                    >
+                        <content>
+                            <HBox class="adminScreenActions">
+                                <VBox>
+                                    <Label text="autoid :" />
+                                    <Input
+                                        value="{dialogModel>/autoid}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="custid :" />
+                                    <Input
+                                        value="{dialogModel>/custid}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                            </HBox>
+ 
+                            <HBox class="adminScreenActions">
+                                <VBox>
+                                    <Label text="description :" />
+                                    <Input
+                                        value="{dialogModel>/description}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                                <VBox>
+                                    <Label text="location" />
+                                    <Input
+                                        value="{dialogModel>/location}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                            </HBox>
+ 
+                            <HBox class="adminScreenActions">
+                                <VBox>
+                                    <Label text="name" />
+                                    <Input
+                                        value="{dialogModel>/name}"
+                                        editable="{dialogModel>/editable}"
+                                    />
+                                </VBox>
+                               
+                            </HBox>
+ 
+ 
+                       
+                        </content>
+ 
+                        <beginButton>
+                            <Button
+                                text="{dialogModel>/buttonText}"
+                                press="onToggleEdit"
+                            />
+                        </beginButton>
+                        <endButton>
+                            <Button
+                                text="Cancel"
+                                press="onCloseDialog"
+                            />
+                        </endButton>
+                    </Dialog>
+ 
+
         </content>
     </Page>
 </mvc:View>
+

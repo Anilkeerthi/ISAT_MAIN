@@ -159,6 +159,15 @@ div#__title0-expand-wrapper {
     .sapMButton {
         width: 100% !important;
     }
+
+    .hbox{
+        gap:10px
+    }
+}
+
+.adminScreenActions{
+    gap: 10px !important;
+    padding: 10px !important;
 }
 .Actions{
     gap: 10px !important;
